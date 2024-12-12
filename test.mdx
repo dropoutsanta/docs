@@ -1,6 +1,5 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Javascript SDK Functions"
 ---
 
 ## **Introduction**
@@ -34,7 +33,6 @@ The `identify` function is used to attach custom data to a visitor, which will b
   * Example:
     \{ "Name": "John", "LastName": "Doe", "Email": "john.doe@example.com" }
 
-
   * You can use any custom keys, such as `Age`, `Company`, `MembershipLevel`...
 
 ### Example Code:
@@ -45,7 +43,6 @@ F2FSDK.identify(\{
 &#x20; Age: 29,
 &#x20; MembershipLevel: "Gold"
 });
-
 
 Once identified, this data will appear on the visitor's profile in your F2F dashboard.
 
@@ -75,7 +72,6 @@ The `workflow` function triggers a predefined workflow in your F2F dashboard.
 
 F2FSDK.workflow("abc123xyz", "New Visitor from \{\{visitor.country}} just entered");
 
-
 ***
 
 ## **Notify**
@@ -97,7 +93,6 @@ The `notify` function sends a custom notification to Slack or Discord if your or
 ### Example Code:
 
 F2FSDK.notify("New Visitor \{\{visitor.name}} just entered", "C01ABCD2EFG", "slack");
-
 
 ***
 
@@ -122,7 +117,6 @@ The `popup` function displays a workflow popup at any custom time.
 ### Example Code:
 
 F2FSDK.popup("popup123abc");
-
 
 **When to use**:
 
