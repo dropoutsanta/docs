@@ -1,0 +1,151 @@
+---
+title: 'New file'
+description: 'Description of your new file.'
+---
+
+## **Introduction**
+
+That same line of code you install on your website to get access basic Face2Face functionality, extends way beyond. It enables your development team to embed Face2Face into your product, and decide precisely when, and what shows up to who.
+
+You can use it to:
+
+* Identify Visitors
+
+* Display Popups
+
+* Trigger Notifications
+
+* Trigger Workflows
+
+Giving you the ultimate level of flexibility, so you can implement F2F technology seamlessly within your application.
+
+***
+
+## **Identify**
+
+**Usage**: `identify(identity)`
+
+The `identify` function is used to attach custom data to a visitor, which will be visible on your F2F dashboard.
+
+### Parameters:
+
+* **identity**: An object containing key-value pairs to identify the visitor.
+
+  * Example:
+    \{ "Name": "John", "LastName": "Doe", "Email": "john.doe@example.com" }
+
+
+  * You can use any custom keys, such as `Age`, `Company`, `MembershipLevel`...
+
+### Example Code:
+
+F2FSDK.identify(\{
+&#x20; Name: "Jane",
+&#x20; LastName: "Smith",
+&#x20; Age: 29,
+&#x20; MembershipLevel: "Gold"
+});
+
+
+Once identified, this data will appear on the visitor's profile in your F2F dashboard.
+
+Demo:
+
+***
+
+## **Workflow**
+
+**Usage**: `workflow(workflow_id, custom_message)`
+
+The `workflow` function triggers a predefined workflow in your F2F dashboard.
+
+### Parameters:
+
+* **workflow\_id**: The unique identifier for the workflow.
+
+  * **How to get it**: In the **Workflows tab** (left sidebar), click the three dots next to a workflow and select *Copy Workflow ID*.
+
+* **custom\_message** (optional): A string to override the default message for this workflow.
+
+### Behavior:
+
+* If `custom_message` is not provided, the default message defined in the workflow will be used.
+
+### Example Code:
+
+F2FSDK.workflow("abc123xyz", "New Visitor from \{\{visitor.country}} just entered");
+
+
+***
+
+## **Notify**
+
+**Usage**: `notify(message, channel_id, destination)`
+
+The `notify` function sends a custom notification to Slack or Discord if your organization is integrated with those platforms.
+
+### Parameters:
+
+* **message**: The text you want to send.
+
+* **channel\_id**: The ID of the channel where the message will be sent.
+
+  * **How to get it**: In **Settings -> Integrations tab**, integrate Slack/Discord and use the dropdown to find available channel IDs.
+
+* **destination**: The platform for the notification. Options: `"slack"` or `"discord"`.
+
+### Example Code:
+
+F2FSDK.notify("New Visitor \{\{visitor.name}} just entered", "C01ABCD2EFG", "slack");
+
+
+***
+
+## **Popup**
+
+**Usage**: `popup(workflow_id)`
+
+The `popup` function displays a workflow popup at any custom time.
+
+### Parameters:
+
+* **workflow\_id**: The unique identifier for the popup workflow.
+
+### How to Create a Popup Workflow:
+
+1. Navigate to the **Workflows page** (left sidebar).
+
+2. Click **New Workflow**.
+
+3. Select **Visitor Popup** as the workflow type and complete the setup.
+
+### Example Code:
+
+F2FSDK.popup("popup123abc");
+
+
+**When to use**:
+
+* This is useful when the workflow popup is disabled (does not show on page load) but you want to trigger it manually.
+
+### Demo:
+
+[Screen Recording 2024-12-05 at 4.47.23 PM.mov](https://prod-files-secure.s3.us-west-2.amazonaws.com/0ac3900f-36cc-4a72-91d4-19e31e1bea92/cddcf135-cfe4-4e5a-a3ef-22fbf9e88633/Screen_Recording_2024-12-05_at_4.47.23_PM.mov)
+
+***
+
+### **Summary of Integration Setup**
+
+* Go to **Settings -> Integrations** to set up Slack or Discord.
+
+* Follow the prompts to integrate and enable the dropdown menu for selecting channels.
+
+***
+
+### **Best Practices**
+
+* Use `identify` early in your visitor journey to capture relevant data.
+
+* Structure workflows thoughtfully for reusability.
+
+* Test integrations (Slack/Discord) to ensure proper notifications.
